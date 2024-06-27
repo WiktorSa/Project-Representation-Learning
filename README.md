@@ -22,9 +22,7 @@ dvc repro
 
 Notebooki zostaną wykonane i zapisane w `results/` jako pliki HTML. Może to chwilę potrwać.
 
-Jeżeli komenda `dvc pull` nie zadziała, należy pobrać cały dataset z linku wyżej i umieścić go w folderze projektu
-
-Uwaga: etap `eda` wymaga pobrania folderu `data` z linku wyżej i umieszczanie go w folderze projektu. Ze względu na rozmiar danych i długi czas pobierania ten folder nie będzie pobierany przez DVC
+Uwaga: przed uruchomieniem `dvc repro` należy pobrać cały dataset z linku wyżej i umieścić go w folderze projektu
 
 ## Porównanie wyników
 
