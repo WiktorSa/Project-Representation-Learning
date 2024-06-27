@@ -1,0 +1,165 @@
+schema: '2.0'
+stages:
+  eda:
+    cmd: mkdir -p results && python -m ipykernel install --user --name myenv --display-name
+      "Python (myenv)" && python -m jupyter nbconvert --ExecutePreprocessor.kernel_name=myenv
+      --execute EDA.ipynb --to html --embed-images --output results/EDA.html
+    deps:
+    - path: EDA.ipynb
+      hash: md5
+      md5: be26d88c59bd0ce97d7601fbdd8b9b4e
+      size: 16904
+    - path: data/annotations.csv
+      hash: md5
+      md5: f4404df491aee6445a4485061bfdffdd
+      size: 136986
+    - path: data/annotations_excluded.csv
+      hash: md5
+      md5: cc20913a2f1a44e183958e7e2154ddfd
+      size: 3534875
+    - path: data/images/subset0
+      hash: md5
+      md5: 3a3d0d4a4d218cab4cc01fdef614b2f0.dir
+      size: 11990504089
+      nfiles: 178
+    outs:
+    - path: results/EDA.html
+      hash: md5
+      md5: 2dcad31809df3c9ff609a2d2e5940655
+      size: 3312429
+  run_models@MoCo:
+    cmd: mkdir -p results && python -m ipykernel install --user --name myenv --display-name
+      "Python (myenv)" && python -m jupyter nbconvert --ExecutePreprocessor.kernel_name=myenv
+      --execute MoCo.ipynb --to html --embed-images --output results/MoCo.html
+    deps:
+    - path: MoCo.ipynb
+      hash: md5
+      md5: ef9fcb4c0c4ee68beb672f13aaf74bed
+      size: 15491
+    - path: data_transform/subset0/data.npz
+      hash: md5
+      md5: 381b38c660081998674dc95bc6c5c6cd
+      size: 139004934
+    - path: data_transform/subset1/data.npz
+      hash: md5
+      md5: 0c74db5471d4be7a8c4c7ed654dd5a25
+      size: 134047806
+    - path: data_transform/subset2/data.npz
+      hash: md5
+      md5: 2ea21d6006bd95e6ef7da677b59e49dd
+      size: 160226358
+    - path: data_transform/subset3/data.npz
+      hash: md5
+      md5: 02e8394ce90deb873771d4dc1146f047
+      size: 143921094
+    - path: data_transform/subset4/data.npz
+      hash: md5
+      md5: 98a80c885e67f8cbc20266fc24f8bc8a
+      size: 151705014
+    outs:
+    - path: results/MoCo.html
+      hash: md5
+      md5: 6956a09ba276f1da822b03cbfc5a7251
+      size: 2815369
+  run_models@StandardClassifier:
+    cmd: mkdir -p results && python -m ipykernel install --user --name myenv --display-name
+      "Python (myenv)" && python -m jupyter nbconvert --ExecutePreprocessor.kernel_name=myenv
+      --execute StandardClassifier.ipynb --to html --embed-images --output results/StandardClassifier.html
+    deps:
+    - path: StandardClassifier.ipynb
+      hash: md5
+      md5: 30d31590e365a3de1b0ca9da3414a5b5
+      size: 6153
+    - path: data_transform/subset0/data.npz
+      hash: md5
+      md5: 381b38c660081998674dc95bc6c5c6cd
+      size: 139004934
+    - path: data_transform/subset1/data.npz
+      hash: md5
+      md5: 0c74db5471d4be7a8c4c7ed654dd5a25
+      size: 134047806
+    - path: data_transform/subset2/data.npz
+      hash: md5
+      md5: 2ea21d6006bd95e6ef7da677b59e49dd
+      size: 160226358
+    - path: data_transform/subset3/data.npz
+      hash: md5
+      md5: 02e8394ce90deb873771d4dc1146f047
+      size: 143921094
+    - path: data_transform/subset4/data.npz
+      hash: md5
+      md5: 98a80c885e67f8cbc20266fc24f8bc8a
+      size: 151705014
+    outs:
+    - path: results/StandardClassifier.html
+      hash: md5
+      md5: 72fad8f91a593c61e770361f2c98ff26
+      size: 484639
+  run_models@BYOL:
+    cmd: mkdir -p results && python -m ipykernel install --user --name myenv --display-name
+      "Python (myenv)" && python -m jupyter nbconvert --ExecutePreprocessor.kernel_name=myenv
+      --execute BYOL.ipynb --to html --embed-images --output results/BYOL.html
+    deps:
+    - path: BYOL.ipynb
+      hash: md5
+      md5: 171c5ca8fef00877ee2413d9cc9f1291
+      size: 12752
+    - path: data_transform/subset0/data.npz
+      hash: md5
+      md5: 381b38c660081998674dc95bc6c5c6cd
+      size: 139004934
+    - path: data_transform/subset1/data.npz
+      hash: md5
+      md5: 0c74db5471d4be7a8c4c7ed654dd5a25
+      size: 134047806
+    - path: data_transform/subset2/data.npz
+      hash: md5
+      md5: 2ea21d6006bd95e6ef7da677b59e49dd
+      size: 160226358
+    - path: data_transform/subset3/data.npz
+      hash: md5
+      md5: 02e8394ce90deb873771d4dc1146f047
+      size: 143921094
+    - path: data_transform/subset4/data.npz
+      hash: md5
+      md5: 98a80c885e67f8cbc20266fc24f8bc8a
+      size: 151705014
+    outs:
+    - path: results/BYOL.html
+      hash: md5
+      md5: 6c49cc1553b9e305552d0b89882cce56
+      size: 1320954
+  run_models@DINO:
+    cmd: mkdir -p results && python -m ipykernel install --user --name myenv --display-name
+      "Python (myenv)" && python -m jupyter nbconvert --ExecutePreprocessor.kernel_name=myenv
+      --execute DINO.ipynb --to html --embed-images --output results/DINO.html
+    deps:
+    - path: DINO.ipynb
+      hash: md5
+      md5: 0a352910e2e63af8671e9b9fa8b1e980
+      size: 15907
+    - path: data_transform/subset0/data.npz
+      hash: md5
+      md5: 381b38c660081998674dc95bc6c5c6cd
+      size: 139004934
+    - path: data_transform/subset1/data.npz
+      hash: md5
+      md5: 0c74db5471d4be7a8c4c7ed654dd5a25
+      size: 134047806
+    - path: data_transform/subset2/data.npz
+      hash: md5
+      md5: 2ea21d6006bd95e6ef7da677b59e49dd
+      size: 160226358
+    - path: data_transform/subset3/data.npz
+      hash: md5
+      md5: 02e8394ce90deb873771d4dc1146f047
+      size: 143921094
+    - path: data_transform/subset4/data.npz
+      hash: md5
+      md5: 98a80c885e67f8cbc20266fc24f8bc8a
+      size: 151705014
+    outs:
+    - path: results/DINO.html
+      hash: md5
+      md5: 042121443f29547dc8eba6ed6f35481c
+      size: 777486

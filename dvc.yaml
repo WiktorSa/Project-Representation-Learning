@@ -1,0 +1,36 @@
+stages:
+  eda:
+    cmd: mkdir -p results &&
+        python -m ipykernel install --user --name myenv --display-name "Python (myenv)" &&
+        python -m jupyter nbconvert --ExecutePreprocessor.kernel_name=myenv
+        --execute EDA.ipynb --to html --embed-images --output results/EDA.html
+    deps:
+        - EDA.ipynb
+        - data/images/subset0
+        - data/annotations.csv
+        - data/annotations_excluded.csv
+    outs:
+      - results/EDA.html:
+          cache: false
+
+  run_models:
+    foreach:
+      - MoCo
+      - StandardClassifier
+      - BYOL
+      - DINO
+    do:
+      cmd: mkdir -p results &&
+        python -m ipykernel install --user --name myenv --display-name "Python (myenv)" &&
+        python -m jupyter nbconvert --ExecutePreprocessor.kernel_name=myenv
+        --execute ${item}.ipynb --to html --embed-images --output results/${item}.html
+      deps:
+        - ${item}.ipynb
+        - data_transform/subset0/data.npz
+        - data_transform/subset1/data.npz
+        - data_transform/subset2/data.npz
+        - data_transform/subset3/data.npz
+        - data_transform/subset4/data.npz
+      outs:
+        - results/${item}.html:
+            cache: false
